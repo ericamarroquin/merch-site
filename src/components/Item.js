@@ -1,25 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ItemDetails from "./ItemDetails";
 
 
 function Item(props) {
   const [detailsVisibleOnPage, handleShowDetailsOnClick] = React.useState(false); // creates a 'state' property detailsVisibleOnPage and function handleShowDetailsOnClick that will update details state
+  const { item } = props;
 
-  if (detailsVisibleOnPage) {
-    return(
-      <React.Fragment>
-        <h3>{props.name}</h3>
-        <ItemDetails />
-      </React.Fragment>
-    )
-  }
+  // function handleClickForItemDetails() = {
+
+
+
   return(
     <React.Fragment>
-      <h3>{props.name}</h3>
-      <p>Description: {props.description}</p>
-      <p>Quantity: {props.quantity}</p>
+      <div onClick = {() => whenItemDetailsClicked()}>
+        {props.name}
+        {detailsVisibleOnPage && ( // will trigger if detailsVisibleOnPage is true
+          <ItemDetails itemToShowDetails={item} /> // send selected item into item details as a prop
+        )}
+      </div>
     </React.Fragment>
-  );
+  )
 }
 
 Item.propTypes = {

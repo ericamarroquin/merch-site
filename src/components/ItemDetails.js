@@ -3,7 +3,8 @@ import React from "react";
 function ItemDetails(props) {
   return(
     <React.Fragment>
-      <p>These are item details</p>
+      <p>{props.description}</p>
+      <p>{props.quantity}</p>
     </React.Fragment>
   );
 }
