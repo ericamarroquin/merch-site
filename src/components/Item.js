@@ -3,6 +3,16 @@ import PropTypes from "prop-types";
 
 
 function Item(props) {
+  const [detailsVisibleOnPage, handleShowDetailsOnClick] = React.useState(false); // creates a 'state' property detailsVisibleOnPage and function handleShowDetailsOnClick that will update details state
+
+  if (detailsVisibleOnPage) {
+    return(
+      <React.Fragment>
+        <h3>{props.name}</h3>
+        <ItemDetails />
+      </React.Fragment>
+    )
+  }
   return(
     <React.Fragment>
       <h3>{props.name}</h3>
