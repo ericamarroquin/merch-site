@@ -4,21 +4,16 @@ import PropTypes from "prop-types";
 
 function Item(props) {
   const [details, showDetails] = React.useState(false); // using hooks
-  let buttonText = null;
-
-  if (details === true) {
-    buttonText = "Hide Details";
-  } else {
-    buttonText = "Show Details";
-  }
 
   return(
     <React.Fragment>
-      <p><em>{props.name}</em></p>
+      <div onClick={() => showDetails(!details)}>
+        <p><em>{props.name}</em></p>
+      </div>
 
-      {details ? <h1>these are details</h1> : null}
+      {details ? 
+        <p>{props.description} - Quantity: {props.quantity}</p> : null} 
 
-      <button onClick={ () => showDetails(!details) }>{buttonText}</button>
       <hr />
     </React.Fragment>
   )
@@ -30,4 +25,4 @@ Item.propTypes = {
   quantity: PropTypes.number
 };
 
-export default Item; 
+export default Item;
